@@ -1,4 +1,3 @@
-// src/config/db.js
 import mongoose from 'mongoose';
 
 export const connectDB = async () => {
@@ -10,3 +9,5 @@ export const connectDB = async () => {
     process.exit(1); 
   }
 };
+
+export default connectDB;
