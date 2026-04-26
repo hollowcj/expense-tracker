@@ -1,10 +1,10 @@
+import Sidebar from "./components/Sidebar";
 export default function Home() {
-  return (
-    <main className="p-10">
-      <h1 className="text-3xl font-bold">Expense Tracker</h1>
-      <p className="text-gray-500 mt-2">
-        Track your daily expenses easily
-      </p>
-    </main>
+  return(
+    <div className="flex bg-white min-h-screen">
+      <Sidebar />
+      <main className="flex-1 p-8">
+      </main>
+    </div>
   )
 }
