@@ -34,3 +34,22 @@ npm run dev
 | MONGO_URI | MongoDB Atlas connection string |
 | JWT_SECRET | Secret key for signing JWT tokens |
 | NODE_ENV | development or production |
+
+
+
+### Expense & Category Endpoints
+
+All routes require: Authorization: Bearer <token>
+
+| Method | Endpoint                  | Description                      |
+|--------|---------------------------|----------------------------------|
+| GET    | /api/expenses             | Get all expenses                 |
+| GET    | /api/expenses/:id         | Get one expense by ID            |
+| POST   | /api/expenses             | Create a new expense             |
+| PUT    | /api/expenses/:id         | Update an expense                |
+| DELETE | /api/expenses/:id         | Delete an expense                |
+| GET    | /api/expenses/summary     | Total spending by category       |
+| GET    | /api/categories           | Get all categories               |
+| POST   | /api/categories           | Create a new category            |
+| PUT    | /api/categories/:id       | Update a category                |
+| DELETE | /api/categories/:id       | Delete a category                |
