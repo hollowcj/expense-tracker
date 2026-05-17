@@ -1,55 +1,23 @@
-## Backend
+## FUNDLY 
+A student expense tracker
 
-Built with Node.js, Express, MongoDB, and Mongoose.
+## 🚀 Current Project Status (Working Features)
 
-### Stack
-- Node.js and Express for theAPI server
-- MongoDB and Mongoose for the database
-- bcryptjs for the password hashing
-- jsonwebtoken for the authentication
-- TypeScript for the type definitions
+The following core modules and systems have been fully implemented, integrated with the backend, and verified through dummy testing:
 
-### Running locally
+### 1. Authentication & Security
+* **User Registration (`/signup`):** Fully functional signup flow that captures First Name, Last Name, and school email addresses (`@pau.edu.ng`) or normal email addresses. It successfully provisions new user records inside Supabase Auth.
+* **In-App Notifications:** Replaced default browser alerts during signup with smooth, modern, brand-colored Material UI (`Snackbar`/`Alert`) toast notifications.
+* **Secure Route Guards:** The dashboard layout (`app/dashboard/layout.tsx`) actively checks for a live session token via Supabase. If an unauthenticated user manually types `/dashboard` into the browser search bar, the system catches it instantly and kicks them back to the login page.
+* **Dynamic User Greeting:** The dashboard home screen successfully fetches the logged-in user's metadata to display their actual first name dynamically ("Welcome back, Clinton").
 
-```bash
-cd backend
-npm install
-cp .env.example .env
-npm run dev
-```
+### 2. Transaction Architecture (API Subsystem)
+* **Two-Tier Expense Endpoints:** Consolidated the backend transaction system into just two clean, highly efficient endpoint files to minimize repository clutter:
+  * `GET /api/expenses` – Chronologically fetches all logged transaction history.
+  * `POST /api/expenses` – Handles saving new transactions to the database.
 
-### Auth API Endpoints
-
-| Method | Endpoint | Access | Description |
-|--------|----------|--------|-------------|
-| POST | /api/auth/register | Public | Create account. Body: name, email, password |
-| POST | /api/auth/login | Public | Login. Body: email, password. Returns JWT token |
-| GET | /api/auth/me | Protected | Get current user. Header: Authorization: Bearer token |
-
-### Environment Variables
-
-| Variable | Description |
-|----------|-------------|
-| PORT | Port the server runs on (default 5000) |
-| MONGO_URI | MongoDB Atlas connection string |
-| JWT_SECRET | Secret key for signing JWT tokens |
-| NODE_ENV | development or production |
-
-
-
-### Expense & Category Endpoints
-
-All routes require: Authorization: Bearer <token>
-
-| Method | Endpoint                  | Description                      |
-|--------|---------------------------|----------------------------------|
-| GET    | /api/expenses             | Get all expenses                 |
-| GET    | /api/expenses/:id         | Get one expense by ID            |
-| POST   | /api/expenses             | Create a new expense             |
-| PUT    | /api/expenses/:id         | Update an expense                |
-| DELETE | /api/expenses/:id         | Delete an expense                |
-| GET    | /api/expenses/summary     | Total spending by category       |
-| GET    | /api/categories           | Get all categories               |
-| POST   | /api/categories           | Create a new category            |
-| PUT    | /api/categories/:id       | Update a category                |
-| DELETE | /api/categories/:id       | Delete a category                |
+### 3. Responsive Layout & UI Micro-Interactions
+* **Adaptive Desktop/Mobile Sidebar:** * On **Desktop**, the sidebar is stationary and fully expanded.
+  * On **Mobile/Tablet**, the sidebar automatically tucks away into a clean top bar and expands via a clickable hamburger menu icon, featuring a modern blurred background mask (`backdrop-blur-sm`).
+* **Hover Micro-Interactions:** Navigation links and the Log Out button feature unified scale transitions (`hover:scale-[1.02]`) and parent-child color matching (`group-hover`), making the interface feel highly responsive and premium.
+* **Session Destruction (Log Out):** The Log Out button successfully clears browser session data via Supabase and smoothly routes the user back to the landing page.
