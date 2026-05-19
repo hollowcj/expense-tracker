@@ -28,12 +28,18 @@ export default function LoginPage() {
     setLoading(true);
     setErrorMessage('');
 
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
     if (error) {
       setErrorMessage(error.message);
       setLoading(false);
-    } else {
+    } else if (data?.session) {
+      const { access_token, refresh_token, expires_in } = data.session;
+
+      document.cookie = `sb-access-token=${access_token}; path=/; max-age=${expires_in}; SameSite=Lax; Secure`;
+      
+      document.cookie = `sb-refresh-token=${refresh_token}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax; Secure`;
+
       router.push('/dashboard');
     }
   };
@@ -71,7 +77,7 @@ export default function LoginPage() {
               boxSizing: 'border-box'
             }}
           >
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 3 }}>
+            <Box sx={{ display: 'flex', justifycontent: 'space-between', alignItems: 'flex-start', mb: 3 }}>
               <Box>
                 <Typography variant="h5" sx={{ color: '#0D3E3A', fontWeight: 700 }}>
                   Sign In
@@ -85,17 +91,14 @@ export default function LoginPage() {
               </Avatar>
             </Box>
 
-
             {errorMessage && (
               <Alert severity="error" sx={{ mb: 2, borderRadius: 2 }}>
                 {errorMessage}
               </Alert>
             )}
 
-
             <Box component="form" onSubmit={handleLogin} sx={{ display: 'flex', flexDirection: 'column', gap: 2.5 }}>
               
-
               <TextField
                 label="Email Address"
                 type="email"
@@ -177,7 +180,6 @@ export default function LoginPage() {
                   {loading ? 'Signing In...' : 'Sign In'}
                 </Button>
 
-                {/* Forgot Password */}
                 <Link 
                   href="#" 
                   underline="hover" 

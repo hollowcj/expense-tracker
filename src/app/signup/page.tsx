@@ -14,7 +14,6 @@ const SignUpPage = () => {
     const [errorMsg, setErrorMsg] = useState('');
     const [loading, setLoading] = useState(false);
 
-    // Notification State
     const [toast, setToast] = useState({
         open: false,
         message: '',
@@ -30,7 +29,6 @@ const SignUpPage = () => {
         setErrorMsg('');
         setLoading(true);
 
-
         try {
             const { data, error } = await supabase.auth.signUp({
                 email,
@@ -45,15 +43,26 @@ const SignUpPage = () => {
 
             if (error) throw error;
 
+            // FIX: If the user is automatically logged in right after account creation,
+            // we immediately parse their tokens into cookies to feed the Next.js middleware.
+            if (data?.session) {
+                const { access_token, refresh_token, expires_in } = data.session;
+                
+                document.cookie = `sb-access-token=${access_token}; path=/; max-age=${expires_in}; SameSite=Lax; Secure`;
+                document.cookie = `sb-refresh-token=${refresh_token}; path=/; max-age=${60 * 60 * 24 * 7}; SameSite=Lax; Secure`;
+            }
+
             setToast({
                 open: true,
-                message: 'Account created successfully! Check your email for a verification link.',
+                message: data?.session 
+                    ? 'Account created successfully! Preparing your workspace...' 
+                    : 'Account created successfully! Check your email for a verification link.',
                 severity: 'success'
             });
 
-            
+            // Redirect smoothly once states are safely bound
             setTimeout(() => {
-                router.push('/');
+                router.push(data?.session ? '/dashboard' : '/');
             }, 3500);
 
         } catch (error: any) {
