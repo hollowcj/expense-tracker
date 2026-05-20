@@ -124,15 +124,15 @@ const weeklyData = [
                         </button>
                     </div>
                 </div>
-           <div style={{marginTop:'40px'}}>
-                <ResponsiveContainer width="100%" height={250}>
-                   <BarChart data ={view === "monthly" ? spendingData : weeklyData}>
-                        <XAxis dataKey={view === "monthly" ? "month" : "day"} />
-                        <YAxis />
-                        <Bar dataKey="amount" fill="#0d4d4d" radius={[6,6,0,0]} />
-                    </BarChart>
-                </ResponsiveContainer>
-            </div>     
+                <div style={{marginTop:'30px', marginRight:'30px'}}>
+                        <ResponsiveContainer width="100%" height={250}>
+                            <BarChart data ={view === "monthly" ? spendingData : weeklyData}>
+                                <XAxis dataKey={view === "monthly" ? "month" : "day"} />
+                                <YAxis />
+                                <Bar dataKey="amount" fill="#0d4d4d" radius={[6,6,0,0]} />
+                            </BarChart>
+                        </ResponsiveContainer>
+                </div>     
             </div>    
         </div>
 );
