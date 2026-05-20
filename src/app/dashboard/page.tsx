@@ -40,8 +40,10 @@ const Dashboard = () => {
                     Here is your overview for {currentMonth}
                 </p>
             </div>
+            <div style={{marginBottom:'30px'}}>
             <div style={{width:'44px', height:'44px', borderRadius:'50%', backgroundColor:'#0d4d4d', display:'flex', alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
-                <p style={{color:'white', fontWeight:'bold', fontSize:'16px', margin:'0'}}>A</p>
+                <p style={{color:'white', fontWeight:'bold', fontSize:'16px', margin:'0'}}>L</p>
+            </div>
             </div>
         </div>
 
@@ -49,21 +51,25 @@ const Dashboard = () => {
             <div style={{display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:'20px', marginTop:'30px'}}>
                 <div style={{padding:'24px', backgroundColor:'#E8F5F3', borderRadius:'15px'}}>
                     <p style={{fontSize:'12px', fontWeight:'700', color:'#0d4d4d'}}>BUDGET LIMIT</p>
-                        <div style={{backgroundColor:'#a8cec1', borderRadius:'999px', height:'8px', marginTop:'22px'}}>
-                            <div style={{backgroundColor:'#0d4d4d', borderRadius:'999px', height:'8px', width:'75%'}}></div>
+                        <div>
                             <p style={{fontSize:'11px', color:'#0d4d4d', marginTop:'8px'}}>75% of monthly limit used</p>
+                            <div style={{backgroundColor:'#a8cec1', borderRadius:'999px', height:'8px', marginTop:'3px'}}>
+                                <div style={{backgroundColor:'#0d4d4d', borderRadius:'999px', height:'8px', width:'55%'}}></div>
+                            </div>
                         </div>
 
-                        <div style={{backgroundColor:'#a8cec1', borderRadius:'999px', height:'8px', marginTop:'22px'}}>
-                            <div style={{backgroundColor:'#0d4d4d', borderRadius:'999px', height:'8px', width:'25%'}}></div>
+                        <div>
                             <p style={{fontSize:'11px', color:'#0d4d4d', marginTop:'8px'}}>75% of monthly limit used</p>
+                            <div style={{backgroundColor:'#a8cec1', borderRadius:'999px', height:'8px', marginTop:'2px'}}>
+                                <div style={{backgroundColor:'#0d4d4d', borderRadius:'999px', height:'8px', width:'55%'}}></div>
+                            </div>
                         </div>
-
                 
-
-                        <div style={{backgroundColor:'#a8cec1', borderRadius:'999px', height:'8px', marginTop:'22px'}}>
-                            <div style={{backgroundColor:'#0d4d4d', borderRadius:'999px', height:'8px', width:'55%'}}></div>
+                        <div>
                             <p style={{fontSize:'11px', color:'#0d4d4d', marginTop:'8px'}}>75% of monthly limit used</p>
+                            <div style={{backgroundColor:'#a8cec1', borderRadius:'999px', height:'8px', marginTop:'2px'}}>
+                                <div style={{backgroundColor:'#0d4d4d', borderRadius:'999px', height:'8px', width:'55%'}}></div>
+                            </div>
                         </div>
                 
             </div>
