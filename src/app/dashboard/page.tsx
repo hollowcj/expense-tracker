@@ -2,7 +2,8 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { Pointer, View } from 'lucide-react';
+import { Pointer, View, ArrowUpCircleIcon} from 'lucide-react';
+
 
 const Dashboard = () => {
     const [firstName, setFirstName] = useState<string>("user");
@@ -70,11 +71,18 @@ const weeklyData = [
         </div>
 
         {/* 3 Cards Row */}
-            <div style={{display:'grid', gridTemplateColumns:'1fr 1fr 1fr', gap:'20px', marginTop:'30px'}}>
-                <div style={{padding:'24px', backgroundColor:'#E8F5F3', borderRadius:'15px'}}>
-                    <p style={{fontSize:'13px', fontWeight:'700', color:'#0d4d4d'}}>BUDGET USAGE</p>
+            <div style={{display:'grid', gridTemplateColumns:'1fr 1fr 1fr 1fr', gap:'20px', marginTop:'30px'}}>
 
-                        <div>
+                <div style={{padding:'24px', backgroundColor:'#0d4d4d', borderRadius:'15px'}}>
+                <p style={{fontSize:'17px', fontWeight:'500', color:'#E8F5F3'}}>BALANCE</p>
+                <p style={{fontSize:'33px', fontWeight:'bolder', color:'#E8F5F3', marginTop:'50px'}}>₦148,200.00</p>
+                <p style={{fontSize:'12px', color:'#E8F5F3', marginTop:'0px'}}>On track</p>
+                </div>
+                
+                <div style={{padding:'24px', backgroundColor:'#E8F5F3', borderRadius:'15px'}}>
+                    <p style={{fontSize:'17px', fontWeight:'500', color:'#0d4d4d'}}>BUDGET USAGE</p>
+
+                        <div style={{marginTop:'24px'}}>
                             <p style={{fontSize:'11px', color:'#0d4d4d', marginTop:'8px'}}>Food</p>
                             <div style={{backgroundColor:'#a8cec1', borderRadius:'999px', height:'8px', marginTop:'3px'}}>
                                 <div style={{backgroundColor:'#0d4d4d', borderRadius:'999px', height:'8px', width:'50%'}}></div>
@@ -97,16 +105,17 @@ const weeklyData = [
                 
             </div>
 
+
             <div style={{padding:'24px', backgroundColor:'#E8F5F3', borderRadius:'15px'}}>
-                <p style={{fontSize:'13px', fontWeight:'700', color:'#0d4d4d'}}>MONTHLY INCOME</p>
-                <p style={{fontSize:'28px', fontWeight:'bold', color:'#111827', marginTop:'8px'}}>₦148,200.00</p>
-                <p style={{fontSize:'12px', color:'#9ca3af', marginTop:'4px'}}>On track</p>
+                <p style={{fontSize:'17px', fontWeight:'500', color:'#0d4d4d'}}>MONTHLY INCOME</p>
+                <p style={{fontSize:'35px', fontWeight:'bolder', color:'#0d4d4d', marginTop:'50px'}}>₦148,200.00</p>
+                <p style={{fontSize:'12px', color:'#0d4d4d', marginTop:'0px'}}>On track</p>
                 </div>
 
             <div style={{padding:'24px', backgroundColor:'#E8F5F3', borderRadius:'15px'}}>
-                <p style={{fontSize:'13px', fontWeight:'700', color:'#0d4d4d'}}>MONTHLY EXPENSES</p>
-                <p style={{fontSize:'28px', fontWeight:'bold', color:'#111827', marginTop:'8px'}}>₦134,120.45</p>
-                <p style={{fontSize:'12px', color:'#9ca3af', marginTop:'4px'}}>12% higher than usual</p>
+                <p style={{fontSize:'17px', fontWeight:'500', color:'#0d4d4d'}}>MONTHLY EXPENSES</p>
+                <p style={{fontSize:'35px', fontWeight:'bolder', color:'#0d4d4d', marginTop:'50px'}}>₦134,120.45</p>
+                <p style={{fontSize:'12px', color:'#0d4d4d', marginTop:'0px'}}>12% higher than usual</p>
             </div>
         </div>
 
@@ -133,8 +142,19 @@ const weeklyData = [
                             </BarChart>
                         </ResponsiveContainer>
                 </div>     
+            </div>
+
+            <div style={{padding:'24px', backgroundColor:'#E8F5F3', borderRadius:'15px', marginTop:'30px', minHeight:'500px'}}>
+                <div style={{display:'grid', gridTemplateColumns:'2fr 1fr 1fr 1fr', gap:'10px', paddingBottom:'10px'}}>
+                    <p style={{fontSize:'12px', fontWeight:'700', color:'#9ca3af'}}>TRANSACTION</p>
+                    <p style={{fontSize:'12px', fontWeight:'700', color:'#9ca3af'}}>CATEGORY</p>
+                    <p style={{fontSize:'12px', fontWeight:'700', color:'#9ca3af'}}>DATE</p>
+                    <p style={{fontSize:'12px', fontWeight:'700', color:'#9ca3af'}}>AMOUNT</p>
+                </div>
             </div>    
         </div>
+
+        
 );
 };
 
