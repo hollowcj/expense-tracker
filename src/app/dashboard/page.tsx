@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { Pointer, View, ArrowUpCircleIcon, TrendingUp, TrendingDown} from 'lucide-react';
+import { Pointer, View, ArrowUpCircleIcon, TrendingUp, TrendingDown, PencilIcon, Bell} from 'lucide-react';
 
 
 const Dashboard = () => {
@@ -53,8 +53,31 @@ const weeklyData = [
     return (
            
         
-    <div style={{paddingTop:'0px',paddingBottom:'20px', paddingLeft:'15px', paddingRight:'30px'}}>
-         <div style={{backgroundColor:'#E8F5F3', width:'100%',height:'60px', marginBottom:'6px',borderRadius:'100px',display:'flex',alignItems:'center', paddingRight:'12px', justifyContent:'flex-end'}}>
+    <div style={{paddingTop:'84px',paddingBottom:'20px', paddingLeft:'15px', paddingRight:'30px',position:'relative'}}>
+         <div style={{backgroundColor:'#E8F5F3',
+                        width:'100%',
+                        height:'60px',
+                        borderRadius:'100px',
+                        display:'flex',
+                        gap:'4px',
+                        alignItems:'center', 
+                        paddingRight:'12px', 
+                        justifyContent:'flex-end',
+                        position: 'absolute',
+                        top: '0px',               /* Matches the exact 1.5rem (24px) top padding of Fundly */
+                        left: '15px',              /* Matches the dashboard's left boundary */
+                        right: '30px',
+                        
+                        }}>
+
+                <div style={{width:'40px', height:'40px', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
+                    <p style={{color:'#E8F5F3', fontWeight:'bold', fontSize:'16px', margin:'0'}}><Bell size={18} color='#0d4d4d'/></p>
+                </div>
+
+                <div style={{width:'40px', height:'40px', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
+                    <p style={{color:'#E8F5F3', fontWeight:'bold', fontSize:'16px', margin:'0'}}><PencilIcon size={18} color='#0d4d4d'/> </p>
+                </div>
+
                 <div style={{width:'44px', height:'44px', borderRadius:'50%', backgroundColor:'#0d4d4d', display:'flex', alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
                     <p style={{color:'#E8F5F3', fontWeight:'bold', fontSize:'16px', margin:'0'}}>L</p>
                 </div>
