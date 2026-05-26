@@ -196,23 +196,23 @@ const weeklyData = [
 
                 <div style={{display:'grid', gridTemplateColumns:'2fr 1fr 1fr 1fr', gap:'10px', paddingTop:'12px', paddingBottom:'12px'}}>
                     <p style={{fontSize:'13px', color:'#111827'}}>Blue Bottle Coffee</p>
-                    <p style={{fontSize:'13px', color:'#111827'}}>Dining Out</p>
+                    <p style={{fontSize:'13px', color:'#111827'}}><mark style={{backgroundColor:'#cd69ff', color:'#ffffff',borderRadius:'4px', padding:'4px'}}>Food</mark></p>
                     <p style={{fontSize:'13px', color:'#111827'}}>May 1, 2025</p>
                     <p style={{fontSize:'13px', color:'#e53e3e'}}>-₦12.50</p>
                 </div>
 
                  <div style={{display:'grid', gridTemplateColumns:'2fr 1fr 1fr 1fr', gap:'10px', paddingTop:'12px', paddingBottom:'12px'}}>
-                    <p style={{fontSize:'13px', color:'#111827'}}>Blue Bottle Coffee</p>
-                    <p style={{fontSize:'13px', color:'#111827'}}>Dining Out</p>
+                    <p style={{fontSize:'13px', color:'#111827'}}>Groceries</p>
+                    <p style={{fontSize:'13px', color:'#111827'}}><mark style={{backgroundColor:'#cd69ff', color:'#ffffff',borderRadius:'4px', padding:'4px'}}>Food</mark></p>
                     <p style={{fontSize:'13px', color:'#111827'}}>May 1, 2025</p>
-                    <p style={{fontSize:'13px', color:'#e53e3e'}}>-₦12.50</p>
+                    <p style={{fontSize:'13px', color:'#e53e3e'}}>-₦10002.50</p>
                 </div>
 
                  <div style={{display:'grid', gridTemplateColumns:'2fr 1fr 1fr 1fr', gap:'10px', paddingTop:'12px', paddingBottom:'12px'}}>
-                    <p style={{fontSize:'13px', color:'#111827'}}>Blue Bottle Coffee</p>
-                    <p style={{fontSize:'13px', color:'#111827'}}>Dining Out</p>
-                    <p style={{fontSize:'13px', color:'#111827'}}>May 1, 2025</p>
-                    <p style={{fontSize:'13px', color:'#e53e3e'}}>-₦12.50</p>
+                    <p style={{fontSize:'13px', color:'#111827'}}>Allowance deposit</p>
+                    <p style={{fontSize:'13px', color:'#111827'}}><mark style={{backgroundColor:'#1dcc43', color:'#ffffff',borderRadius:'4px', padding:'4px'}}>Income</mark></p>
+                    <p style={{fontSize:'13px', color:'#111827'}}>June 1, 2025</p>
+                    <p style={{fontSize:'13px', color:'#1dcc43'}}>+₦140000</p>
                 </div>
             </div>    
         </div>
