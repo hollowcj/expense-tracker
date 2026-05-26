@@ -71,11 +71,11 @@ const weeklyData = [
                         }}>
 
                 <div style={{width:'40px', height:'40px', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
-                    <p style={{color:'#E8F5F3', fontWeight:'bold', fontSize:'16px', margin:'0'}}><Bell size={18} color='#0d4d4d'/></p>
+                    <p style={{color:'#E8F5F3', fontWeight:'bold', fontSize:'16px', margin:'0'}}><Bell size={17} color='#0d4d4d'/></p>
                 </div>
 
                 <div style={{width:'40px', height:'40px', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
-                    <p style={{color:'#E8F5F3', fontWeight:'bold', fontSize:'16px', margin:'0'}}><PencilIcon size={18} color='#0d4d4d'/> </p>
+                    <p style={{color:'#E8F5F3', fontWeight:'bold', fontSize:'16px', margin:'0'}}><PencilIcon size={17} color='#0d4d4d'/> </p>
                 </div>
 
                 <div style={{width:'44px', height:'44px', borderRadius:'50%', backgroundColor:'#0d4d4d', display:'flex', alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
