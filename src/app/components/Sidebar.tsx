@@ -13,7 +13,7 @@ const Sidebar = () => {
     const navItems = [
         { name: "Dashboard", icon: LayoutGrid, path: "/dashboard" },
         { name: "History", icon: History, path: "/dashboard/history" },
-        { name: "Insights", icon: ChartBarIncreasing, path: "/dashboard/insights" },
+        { name: "Insights", icon: ChartBarIncreasing, path: "/dashboard/insight" },
         { name: "Wallet", icon: Wallet, path: "/dashboard/wallet" },
         { name: "Settings", icon: Cog, path: "/dashboard/settings" },
     ];
@@ -67,7 +67,7 @@ const Sidebar = () => {
                 <div className="flex flex-col h-full justify-between pb-4">
                     <div>
 
-                        <h1 className="hidden md:block" style={{ color: '#0D4D4D', fontSize: '24px', fontWeight: 'bold', marginBottom: '32px', textAlign: 'center' }}>
+                        <h1 className="hidden md:block" style={{ color: '#0D4D4D', fontSize: '24px', fontWeight: 'bold', marginBottom: '20px', textAlign: 'center', marginRight:'130px' }}>
                             Fundly
                         </h1>
 
@@ -150,14 +150,6 @@ const Sidebar = () => {
                             Log Out
                         </span>
                     </div>
-                </div>
-
-                <div style={{ padding: '16px', backgroundColor: '#E8F5F3', borderRadius: '15px', width: '100%', boxSizing: 'border-box' }}>
-                    <p style={{ fontSize: '12px', fontWeight: '700', color: '#0d4d4d', margin: 0 }}>BUDGET LIMIT</p>
-                    <div style={{ backgroundColor: '#a8cec1', borderRadius: '999px', height: '6px', marginTop: '8px' }}>
-                        <div style={{ backgroundColor: '#0d4d4d', borderRadius: '999px', height: '6px', width: '75%' }}></div>
-                    </div>
-                    <p style={{ fontSize: '11px', color: '#0d4d4d', marginTop: '8px', margin: 0 }}>75% of monthly limit used</p>
                 </div>
             </aside>
         </>

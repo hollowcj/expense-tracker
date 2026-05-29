@@ -38,7 +38,7 @@ export default function DashboardLayout({
     );
   }
 
-  return (
+ return (
     <Box sx={{ display: 'flex', minHeight: '100vh', width: '100vw', bgcolor: '#F8FAFC' }}>
       <Sidebar />
       <Box 
@@ -47,7 +47,11 @@ export default function DashboardLayout({
           flexGrow: 1, 
           height: '100vh', 
           overflowY: 'auto',
-          p: { xs: 3, md: 5 } 
+          /* CHANGE: Keep left, right, and bottom padding, but set top padding to 0 */
+          pb: { xs: 3, md: 5 },
+          pl: { xs: 3, md: 5 },
+          pr: { xs: 3, md: 5 },
+          pt: 3 
         }}
       >
         {children}
