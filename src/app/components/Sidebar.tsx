@@ -13,7 +13,7 @@ const Sidebar = () => {
     const navItems = [
         { name: "Dashboard", icon: LayoutGrid, path: "/dashboard" },
         { name: "History", icon: History, path: "/dashboard/history" },
-        { name: "Insights", icon: ChartBarIncreasing, path: "/dashboard/insights" },
+        { name: "Insights", icon: ChartBarIncreasing, path: "/dashboard/insight" },
         { name: "Wallet", icon: Wallet, path: "/dashboard/wallet" },
         { name: "Settings", icon: Cog, path: "/dashboard/settings" },
     ];
