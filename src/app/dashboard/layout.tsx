@@ -38,7 +38,7 @@ export default function DashboardLayout({
     );
   }
 
- return (
+  return (
     <Box sx={{ display: 'flex', minHeight: '100vh', width: '100vw', bgcolor: '#F8FAFC' }}>
       <Sidebar />
       <Box 
@@ -47,11 +47,12 @@ export default function DashboardLayout({
           flexGrow: 1, 
           height: '100vh', 
           overflowY: 'auto',
-          /* CHANGE: Keep left, right, and bottom padding, but set top padding to 0 */
           pb: { xs: 3, md: 5 },
           pl: { xs: 3, md: 5 },
           pr: { xs: 3, md: 5 },
-          pt: 3 
+          // xs: 11 provides 88px of top padding on mobile, completely clearing the 64px header bar.
+          // md: 4 drops it back down to a clean 32px padding on desktop views.
+          pt: { xs: 11, md: 4 } 
         }}
       >
         {children}

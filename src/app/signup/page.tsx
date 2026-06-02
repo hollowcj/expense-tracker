@@ -43,8 +43,6 @@ const SignUpPage = () => {
 
             if (error) throw error;
 
-            // FIX: If the user is automatically logged in right after account creation,
-            // we immediately parse their tokens into cookies to feed the Next.js middleware.
             if (data?.session) {
                 const { access_token, refresh_token, expires_in } = data.session;
                 
@@ -60,7 +58,6 @@ const SignUpPage = () => {
                 severity: 'success'
             });
 
-            // Redirect smoothly once states are safely bound
             setTimeout(() => {
                 router.push(data?.session ? '/dashboard' : '/');
             }, 3500);
