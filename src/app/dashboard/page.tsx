@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer } from 'recharts';
-import { TrendingUp, TrendingDown, PencilIcon, Bell, Plus } from 'lucide-react';
+import { TrendingUp, TrendingDown, PencilIcon, Bell, Plus, AlertCircle } from 'lucide-react';
 
 interface Transaction {
     id: string;
@@ -179,6 +179,10 @@ const Dashboard = () => {
     // Balanced aggregate calculations
     const displayTotalIncome = baseMonthlyIncome + totalExtraIncome;
     const dynamicNetBalance = displayTotalIncome - totalExpenses;
+    
+    // Budget Exceeded Logic
+    const isExceeded = totalExpenses > displayTotalIncome;
+    const usagePercentage = displayTotalIncome > 0 ? Math.min((totalExpenses / displayTotalIncome) * 100, 100) : 0;
 
     // --- DYNAMIC CHART GENERATION FROM LIVE STATE ---
     const getMonthlyChartData = (): ChartDataPoint[] => {
@@ -291,7 +295,7 @@ const Dashboard = () => {
                  </div>
              )}
 
-             {/* Main App Toolbar Bar - Fluid positioning using right percentage margins */}
+             {/* Main App Toolbar Bar */}
              <div style={{backgroundColor:'#E8F5F3', height:'60px', borderRadius:'100px', display:'flex', gap:'8px', alignItems:'center', paddingLeft:'20px', paddingRight:'12px', justifyContent:'flex-end', position: 'absolute', top: '12px', left: '4%', right: '4%'}}>
                 <div style={{width:'40px', height:'40px', borderRadius:'50%', display:'flex', alignItems:'center', justifyContent:'center', cursor:'pointer'}}>
                     <Bell size={17} color='#0d4d4d'/>
@@ -304,7 +308,7 @@ const Dashboard = () => {
                 </div>
             </div>
         
-        {/* Welcome Row with Big Call to Action Button - Wrap Enabled for Mobile */}
+        {/* Welcome Row */}
         <div style={{display:'flex', justifyContent:'space-between', alignItems:'flex-end', flexWrap:'wrap', gap:'20px', marginTop:'20px'}}>
             <div style={{flex:'1 1 280px'}}>
                 <h1 style={{fontSize:'calc(20px + 0.6vw)', fontWeight:'bold', color:'#111827', margin: 0, lineHeight: 1.2}}>
@@ -340,7 +344,7 @@ const Dashboard = () => {
             </button>
         </div>
 
-        {/* 4 Cards Grid Metrics Section - Adaptive gridTemplateColumns via auto-fit */}
+        {/* 4 Cards Grid Metrics Section */}
         <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(240px, 1fr))', gap:'20px', marginTop:'30px'}}>
             <div style={{padding:'24px', backgroundColor:'#0d4d4d', borderRadius:'15px', display:'flex', flexDirection:'column', justifyContent:'space-between', minHeight:'140px'}}>
                 <p style={{fontSize:'16px', fontWeight:'500', color:'#E8F5F3', margin:0}}>Net Balance</p>
@@ -353,12 +357,18 @@ const Dashboard = () => {
                 </div>
             </div>
             
-            <div style={{padding:'24px', backgroundColor:'#E8F5F3', borderRadius:'15px', display:'flex', flexDirection:'column', justifyContent:'space-between', minHeight:'140px'}}>
-                <p style={{fontSize:'16px', fontWeight:'500', color: '#0d4d4d', margin:0}}>Budget Usage</p>
+            {/* UPDATED BUDGET USAGE CARD */}
+            <div style={{padding:'24px', backgroundColor: isExceeded ? '#ffebee' : '#E8F5F3', borderRadius:'15px', display:'flex', flexDirection:'column', justifyContent:'space-between', minHeight:'140px'}}>
+                <div style={{display:'flex', justifyContent:'space-between', alignItems:'center'}}>
+                    <p style={{fontSize:'16px', fontWeight:'500', color: isExceeded ? '#c62828' : '#0d4d4d', margin:0}}>Budget Usage</p>
+                    {isExceeded && <AlertCircle size={18} color="#c62828" />}
+                </div>
                 <div style={{marginTop:'24px'}}>
-                    <p style={{fontSize:'11px', color:'#0d4d4d', marginTop:'0', marginBottom:'6px'}}>Live Tracked Expenses</p>
+                    <p style={{fontSize:'11px', color: isExceeded ? '#c62828' : '#0d4d4d', marginTop:'0', marginBottom:'6px', fontWeight: isExceeded ? 'bold' : 'normal'}}>
+                        {isExceeded ? "Budget Exceeded!" : "Live Tracked Expenses"}
+                    </p>
                     <div style={{backgroundColor:'#a8cec1', borderRadius:'999px', height:'8px'}}>
-                        <div style={{backgroundColor:'#0d4d4d', borderRadius:'999px', height:'8px', width: displayTotalIncome > 0 ? `${Math.min((totalExpenses / displayTotalIncome) * 100, 100)}%` : '0%'}}></div>
+                        <div style={{backgroundColor: isExceeded ? '#c62828' : '#0d4d4d', borderRadius:'999px', height:'8px', width: `${usagePercentage}%`}}></div>
                     </div>
                 </div>
             </div>
@@ -386,7 +396,7 @@ const Dashboard = () => {
             </div>
         </div>
 
-        {/* Spending Trends Graph Section - Inner Margin Protection */}
+        {/* Spending Trends Graph Section */}
         <div style={{padding:'24px', backgroundColor:'#E8F5F3', borderRadius:'15px', marginTop:'30px', minHeight:'300px'}}>
             <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', flexWrap:'wrap', gap:'15px', marginBottom:'20px'}}>
                 <p style={{fontSize:'17px', fontWeight:'700', color:'#0d4d4d', margin:0}}>Spending Trends</p>
@@ -407,7 +417,7 @@ const Dashboard = () => {
             </div>     
         </div>
 
-        {/* Ledger Feed Section - Overflow Container Protected for Tiny Screens */}
+        {/* Ledger Feed Section */}
         <div style={{padding:'24px', backgroundColor:'#E8F5F3', borderRadius:'15px', marginTop:'30px'}}>
             <p style={{fontSize:'17px', fontWeight:'700', color:'#0d4d4d', marginBottom:'20px', marginTop:0}}>Recent transactions</p>
             
