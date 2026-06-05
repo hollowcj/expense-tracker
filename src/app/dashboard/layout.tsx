@@ -17,15 +17,12 @@ export default function DashboardLayout({
 
   useEffect(() => {
     const checkUserSession = async () => {
-      // 1. Ask Supabase if there is a live user token in the browser
       const { data: { user } } = await supabase.auth.getUser();
 
       if (!user) {
-        // 2. No user found? Boot them straight back to the login screen!
         router.refresh();
         router.push('/');
       } else {
-        // 3. User exists? Turn off the loading screen and let them pass
         setLoading(false);
       }
     };
@@ -33,7 +30,6 @@ export default function DashboardLayout({
     checkUserSession();
   }, [router]);
 
-  // While checking the token, show a clean loading spinner so they don't see a flash of the dashboard
   if (loading) {
     return (
       <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', bgcolor: '#F8FAFC' }}>
@@ -51,7 +47,12 @@ export default function DashboardLayout({
           flexGrow: 1, 
           height: '100vh', 
           overflowY: 'auto',
-          p: { xs: 3, md: 5 } 
+          pb: { xs: 3, md: 5 },
+          pl: { xs: 3, md: 5 },
+          pr: { xs: 3, md: 5 },
+          // xs: 11 provides 88px of top padding on mobile, completely clearing the 64px header bar.
+          // md: 4 drops it back down to a clean 32px padding on desktop views.
+          pt: { xs: 11, md: 4 } 
         }}
       >
         {children}

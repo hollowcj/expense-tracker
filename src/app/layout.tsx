@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css"
+import { Sidebar } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Fundly",
