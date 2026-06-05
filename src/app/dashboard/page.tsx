@@ -38,6 +38,7 @@ const Dashboard = () => {
     const [totalExpenses, setTotalExpenses] = useState<number>(0);
     const [totalExtraIncome, setTotalExtraIncome] = useState<number>(0);
     const [transactions, setTransactions] = useState<Transaction[]>([]);
+    const [monthlyBudget, setMonthlyBudget] = useState<number>(0);
 
     // Custom Categories Fetch State
     const [userCategories, setUserCategories] = useState<Category[]>([]);
@@ -64,16 +65,17 @@ const Dashboard = () => {
                     }
 
                     // 1. Fetch Monthly Income configuration from profiles
-                    const { data: profileData, error: profileError } = await supabase
-                        .from('profiles')
-                        .select('monthly_income')
-                        .eq('id', user.id)
-                        .single();
+const { data: profileData, error: profileError } = await supabase
+    .from('profiles')
+    .select('monthly_income, monthly_budget') // Add monthly_budget here
+    .eq('id', user.id)
+    .single();
 
-                    if (!profileError && profileData) {
-                        setBaseMonthlyIncome(profileData.monthly_income || 0);
-                        setNewIncomeVal(String(profileData.monthly_income || 0));
-                    }
+if (!profileError && profileData) {
+    setBaseMonthlyIncome(profileData.monthly_income || 0);
+    // Add a state for monthlyBudget to store this value
+    setMonthlyBudget(profileData.monthly_budget || 0); 
+}
 
                     // 2. Fetch User-Specific Custom Categories
                     const { data: catData, error: catError } = await supabase
@@ -181,8 +183,8 @@ const Dashboard = () => {
     const dynamicNetBalance = displayTotalIncome - totalExpenses;
     
     // Budget Exceeded Logic
-    const isExceeded = totalExpenses > displayTotalIncome;
-    const usagePercentage = displayTotalIncome > 0 ? Math.min((totalExpenses / displayTotalIncome) * 100, 100) : 0;
+    const isExceeded = monthlyBudget > 0 ? totalExpenses > monthlyBudget : false;
+const usagePercentage = monthlyBudget > 0 ? Math.min((totalExpenses / monthlyBudget) * 100, 100) : 0;
 
     // --- DYNAMIC CHART GENERATION FROM LIVE STATE ---
     const getMonthlyChartData = (): ChartDataPoint[] => {
@@ -209,7 +211,7 @@ const Dashboard = () => {
             }
         });
         return result;
-    };
+    }
 
     const getWeeklyChartData = (): ChartDataPoint[] => {
         const weeklyBuckets: ChartDataPoint[] = [
